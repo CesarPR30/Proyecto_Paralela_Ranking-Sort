@@ -1,0 +1,168 @@
+Filas: 370  configuraciones: 74  repeticiones minimas: 5
+Ejecuciones con verificacion distinta de OK: 0
+
+Modelo teorico ajustado (Beta 3, escalabilidad fuerte):
+  k global (s por comparacion del modelo) = 8.809e-09   R2(T_comp) = 0.6780
+  k por n (calibrado con p=1): n=1e+06: 4.59 ns  n=4e+06: 5.57 ns  n=1.6e+07: 6.69 ns  n=3.2e+07: 7.70 ns
+  alpha = 4.272e-03 s   beta = 6.211e-09 s/par (ajuste con p=4,9)
+
+Prediccion del modelo (k por n) vs medido, T_comp y T_par:
+  n=  1000000 p= 1  T_comp med=  0.188 mod=  0.188   T_comm med= 0.002 mod= 0.000   T_par med=  0.190 mod=  0.188
+  n=  1000000 p= 4  T_comp med=  0.094 mod=  0.090   T_comm med= 0.018 mod= 0.034   T_par med=  0.099 mod=  0.123
+  n=  1000000 p= 9  T_comp med=  0.089 mod=  0.060   T_comm med= 0.041 mod= 0.058   T_par med=  0.093 mod=  0.118
+  n=  1000000 p=16  T_comp med=  0.088 mod=  0.042   T_comm med= 0.061 mod= 0.056   T_par med=  0.092 mod=  0.098
+  n=  4000000 p= 1  T_comp med=  1.003 mod=  1.003   T_comm med= 0.008 mod= 0.000   T_par med=  1.011 mod=  1.003
+  n=  4000000 p= 4  T_comp med=  0.517 mod=  0.479   T_comm med= 0.052 mod= 0.071   T_par med=  0.536 mod=  0.550
+  n=  4000000 p= 9  T_comp med=  0.458 mod=  0.320   T_comm med= 0.087 mod= 0.103   T_par med=  0.477 mod=  0.423
+  n=  4000000 p=16  T_comp med=  0.538 mod=  0.228   T_comm med= 0.149 mod= 0.096   T_par med=  0.564 mod=  0.324
+  n= 16000000 p= 1  T_comp med=  5.244 mod=  5.244   T_comm med= 0.030 mod= 0.000   T_par med=  5.275 mod=  5.244
+  n= 16000000 p= 4  T_comp med=  2.979 mod=  2.515   T_comm med= 0.233 mod= 0.220   T_par med=  3.053 mod=  2.735
+  n= 16000000 p= 9  T_comp med=  2.821 mod=  1.677   T_comm med= 0.316 mod= 0.286   T_par med=  2.930 mod=  1.962
+  n= 16000000 p=16  T_comp med=  4.418 mod=  1.204   T_comm med= 1.047 mod= 0.254   T_par med=  4.561 mod=  1.458
+  n= 32000000 p= 1  T_comp med= 12.559 mod= 12.559   T_comm med= 0.061 mod= 0.000   T_par med= 12.622 mod= 12.559
+  n= 32000000 p= 4  T_comp med=  6.819 mod=  6.033   T_comm med= 0.323 mod= 0.419   T_par med=  6.971 mod=  6.452
+  n= 32000000 p= 9  T_comp med=  6.594 mod=  4.022   T_comm med= 0.591 mod= 0.529   T_par med=  6.832 mod=  4.551
+  n= 32000000 p=16  T_comp med= 10.997 mod=  2.893   T_comm med= 1.907 mod= 0.465   T_par med= 11.195 mod=  3.358
+
+Desglose por fase, n = 32000000:
+ p  t_scatter  t_gossip  t_bcast   t_sort    t_rank  t_reduce    t_comp   t_comm     t_par   t_post
+ 1   0.017946  0.016842 0.017693 2.096970 10.461752  0.008682 12.558722 0.061158 12.621717 0.553656
+ 4   0.046162  0.062354 0.046679 1.055160  5.772235  0.164758  6.819398 0.323128  6.971131 0.571201
+ 9   0.075257  0.114593 0.129066 0.795318  5.798782  0.278758  6.594100 0.591336  6.831806 0.573367
+16   0.109639  0.173134 0.265215 0.991688 10.005789  1.409265 10.997477 1.907047 11.195254 0.739610
+
+Speedup y eficiencia (T_par):
+  beta3     n=  1000000  p=1: S=1.00 E=1.00  p=4: S=1.93 E=0.48  p=9: S=2.06 E=0.23  p=16: S=2.07 E=0.13
+  beta3     n=  4000000  p=1: S=1.00 E=1.00  p=4: S=1.89 E=0.47  p=9: S=2.12 E=0.24  p=16: S=1.79 E=0.11
+  beta3     n= 16000000  p=1: S=1.00 E=1.00  p=4: S=1.73 E=0.43  p=9: S=1.80 E=0.20  p=16: S=1.16 E=0.07
+  beta3     n= 32000000  p=1: S=1.00 E=1.00  p=4: S=1.81 E=0.45  p=9: S=1.85 E=0.21  p=16: S=1.13 E=0.07
+  quicksort n=  1000000  p=1: S=1.00 E=1.00  p=2: S=1.91 E=0.95  p=4: S=3.26 E=0.82  p=8: S=4.80 E=0.60  p=16: S=4.74 E=0.30
+  quicksort n=  4000000  p=1: S=1.00 E=1.00  p=2: S=1.86 E=0.93  p=4: S=3.12 E=0.78  p=8: S=3.75 E=0.47  p=16: S=4.22 E=0.26
+  quicksort n= 16000000  p=1: S=1.00 E=1.00  p=2: S=1.84 E=0.92  p=4: S=3.06 E=0.77  p=8: S=3.77 E=0.47  p=16: S=3.87 E=0.24
+  quicksort n= 32000000  p=1: S=1.00 E=1.00  p=2: S=1.93 E=0.97  p=4: S=3.23 E=0.81  p=8: S=4.00 E=0.50  p=16: S=3.98 E=0.25
+
+Comparaciones (FLOP del codigo) y tasa:
+       n  p     comp_max   comp_total     t_par  gcomp_s   modelo_max
+ 1000000  1   43709445.0   43709445.0  0.190342 0.229636   41000000.0
+ 1000000  4   20987061.0   83598282.0  0.098538 0.848386   19500000.0
+ 1000000  9   13722564.0  122278751.0  0.092578 1.320819   13000104.0
+ 1000000 16    9978405.0  158733261.0  0.091976 1.725812    9250000.0
+ 4000000  1  193796550.0  193796550.0  1.011100 0.191669  180000000.0
+ 4000000  4   93233041.0  370148414.0  0.535519 0.691196   86000000.0
+ 4000000  9   60630002.0  541108653.0  0.476537 1.135502   57333405.0
+ 4000000 16   44925905.0  710513683.0  0.563803 1.260216   41000000.0
+16000000  1  844113379.0  844113379.0  5.274751 0.160029  784000000.0
+16000000  4  409999016.0 1631957217.0  3.053490 0.534456  376000000.0
+16000000  9  266905867.0 2376127131.0  2.929647 0.811063  250666698.0
+16000000 16  195552186.0 3111628814.0  4.561443 0.682159  180000000.0
+32000000  1 1767081819.0 1767081819.0 12.621717 0.140003 1632000000.0
+32000000  4  857866200.0 3397692206.0  6.971131 0.487395  784000000.0
+32000000  9  558099819.0 4975464994.0  6.831806 0.728280  522666732.0
+32000000 16  407277592.0 6480780366.0 11.195254 0.578886  376000000.0
+
+H1: speedup de computo S_comp = T_comp(1)/T_comp(p) vs teoria sqrt(p)/lambda:
+  n=  1000000 p= 4  S_comp(tiempo)= 2.00  S_comp(operaciones)= 2.08  teoria sqrt(p)/lambda= 2.10  S= 1.93
+  n=  1000000 p= 9  S_comp(tiempo)= 2.13  S_comp(operaciones)= 3.19  teoria sqrt(p)/lambda= 3.15  S= 2.06
+  n=  1000000 p=16  S_comp(tiempo)= 2.14  S_comp(operaciones)= 4.38  teoria sqrt(p)/lambda= 4.43  S= 2.07
+  n=  4000000 p= 4  S_comp(tiempo)= 1.94  S_comp(operaciones)= 2.08  teoria sqrt(p)/lambda= 2.09  S= 1.89
+  n=  4000000 p= 9  S_comp(tiempo)= 2.19  S_comp(operaciones)= 3.20  teoria sqrt(p)/lambda= 3.14  S= 2.12
+  n=  4000000 p=16  S_comp(tiempo)= 1.86  S_comp(operaciones)= 4.31  teoria sqrt(p)/lambda= 4.39  S= 1.79
+  n= 16000000 p= 4  S_comp(tiempo)= 1.76  S_comp(operaciones)= 2.06  teoria sqrt(p)/lambda= 2.09  S= 1.73
+  n= 16000000 p= 9  S_comp(tiempo)= 1.86  S_comp(operaciones)= 3.16  teoria sqrt(p)/lambda= 3.13  S= 1.80
+  n= 16000000 p=16  S_comp(tiempo)= 1.19  S_comp(operaciones)= 4.32  teoria sqrt(p)/lambda= 4.36  S= 1.16
+  n= 32000000 p= 4  S_comp(tiempo)= 1.84  S_comp(operaciones)= 2.06  teoria sqrt(p)/lambda= 2.08  S= 1.81
+  n= 32000000 p= 9  S_comp(tiempo)= 1.90  S_comp(operaciones)= 3.17  teoria sqrt(p)/lambda= 3.12  S= 1.85
+  n= 32000000 p=16  S_comp(tiempo)= 1.14  S_comp(operaciones)= 4.34  teoria sqrt(p)/lambda= 4.34  S= 1.13
+H4: F = (W + n(sqrt p - 1))/T_par y F_util = Ts/T_par, en MOPS; F/F_util vs sqrt(p)*lambda:
+  n=  1000000 p= 1  F=  229.6  F/F(1)= 1.00  F_util=  229.6  F/F_util= 1.00  sqrt(p)*lambda= 1.00
+  n=  1000000 p= 4  F=  858.5  F/F(1)= 3.74  F_util=  443.6  F/F_util= 1.94  sqrt(p)*lambda= 1.90
+  n=  1000000 p= 9  F= 1342.4  F/F(1)= 5.85  F_util=  472.1  F/F_util= 2.84  sqrt(p)*lambda= 2.85
+  n=  1000000 p=16  F= 1758.4  F/F(1)= 7.66  F_util=  475.2  F/F_util= 3.70  sqrt(p)*lambda= 3.61
+  n=  4000000 p= 1  F=  191.7  F/F(1)= 1.00  F_util=  191.7  F/F_util= 1.00  sqrt(p)*lambda= 1.00
+  n=  4000000 p= 4  F=  698.7  F/F(1)= 3.65  F_util=  361.9  F/F_util= 1.93  sqrt(p)*lambda= 1.91
+  n=  4000000 p= 9  F= 1152.3  F/F(1)= 6.01  F_util=  406.7  F/F_util= 2.83  sqrt(p)*lambda= 2.87
+  n=  4000000 p=16  F= 1281.5  F/F(1)= 6.69  F_util=  343.7  F/F_util= 3.73  sqrt(p)*lambda= 3.64
+  n= 16000000 p= 1  F=  160.0  F/F(1)= 1.00  F_util=  160.0  F/F_util= 1.00  sqrt(p)*lambda= 1.00
+  n= 16000000 p= 4  F=  539.7  F/F(1)= 3.37  F_util=  276.4  F/F_util= 1.95  sqrt(p)*lambda= 1.92
+  n= 16000000 p= 9  F=  822.0  F/F(1)= 5.14  F_util=  288.1  F/F_util= 2.85  sqrt(p)*lambda= 2.88
+  n= 16000000 p=16  F=  692.7  F/F(1)= 4.33  F_util=  185.1  F/F_util= 3.74  sqrt(p)*lambda= 3.67
+  n= 32000000 p= 1  F=  140.0  F/F(1)= 1.00  F_util=  140.0  F/F_util= 1.00  sqrt(p)*lambda= 1.00
+  n= 32000000 p= 4  F=  492.0  F/F(1)= 3.51  F_util=  253.5  F/F_util= 1.94  sqrt(p)*lambda= 1.92
+  n= 32000000 p= 9  F=  737.6  F/F(1)= 5.27  F_util=  258.7  F/F_util= 2.85  sqrt(p)*lambda= 2.88
+  n= 32000000 p=16  F=  587.5  F/F(1)= 4.20  F_util=  157.8  F/F_util= 3.72  sqrt(p)*lambda= 3.69
+H5: velocidad n/T_par (Mclaves/s); techo 1/beta = 161 Mclaves/s
+  n=  1000000  p=1:  5.25  p=4: 10.15  p=9: 10.80  p=16: 10.87
+  n=  4000000  p=1:  3.96  p=4:  7.47  p=9:  8.39  p=16:  7.09
+  n= 16000000  p=1:  3.03  p=4:  5.24  p=9:  5.46  p=16:  3.51
+  n= 32000000  p=1:  2.54  p=4:  4.59  p=9:  4.68  p=16:  2.86
+H6: cociente T_comp(RS)/T_comp(QS) y su crecimiento respecto de p=1:
+  n=  1000000 p= 1  RS/QS=  3.24  crecimiento= 1.00  T_par RS=0.190 QS=0.059
+  n=  1000000 p= 4  RS/QS=  6.03  crecimiento= 1.86  T_par RS=0.099 QS=0.018
+  n=  1000000 p=16  RS/QS= 15.59  crecimiento= 4.81  T_par RS=0.092 QS=0.012
+  n=  4000000 p= 1  RS/QS=  4.11  crecimiento= 1.00  T_par RS=1.011 QS=0.247
+  n=  4000000 p= 4  RS/QS=  7.60  crecimiento= 1.85  T_par RS=0.536 QS=0.079
+  n=  4000000 p=16  RS/QS= 15.15  crecimiento= 3.69  T_par RS=0.564 QS=0.058
+  n= 16000000 p= 1  RS/QS=  4.92  crecimiento= 1.00  T_par RS=5.275 QS=1.075
+  n= 16000000 p= 4  RS/QS= 10.12  crecimiento= 2.06  T_par RS=3.053 QS=0.351
+  n= 16000000 p=16  RS/QS= 27.06  crecimiento= 5.50  T_par RS=4.561 QS=0.278
+  n= 32000000 p= 1  RS/QS=  5.53  crecimiento= 1.00  T_par RS=12.622 QS=2.299
+  n= 32000000 p= 4  RS/QS= 11.30  crecimiento= 2.04  T_par RS=6.971 QS=0.713
+  n= 32000000 p=16  RS/QS= 33.20  crecimiento= 6.01  T_par RS=11.195 QS=0.578
+
+Escalabilidad debil (bloque fijo):
+       n  p   t_comp   t_comm    t_par    comp_max
+ 4000000  1 0.815339 0.008110 0.822942 193796550.0
+ 8000000  4 1.223779 0.093584 1.260456 193934446.0
+12000000  9 2.072543 0.229907 2.145462 196047982.0
+16000000 16 3.853627 0.639151 3.988591 195552186.0
+Escalabilidad debil (n/p fijo):
+  version        n  p    t_comp   t_comm     t_par
+    beta3  2000000  1  0.366756 0.004245  0.374155
+    beta3  8000000  4  1.243435 0.110016  1.277255
+    beta3 18000000  9  3.281409 0.397623  3.414137
+    beta3 32000000 16 10.827033 1.831980 10.974404
+quicksort  2000000  1  0.119985 0.001196  0.120856
+quicksort  4000000  2  0.127059 0.008522  0.134656
+quicksort  8000000  4  0.144288 0.036374  0.173577
+quicksort 16000000  8  0.203443 0.118198  0.285494
+quicksort 32000000 16  0.339194 0.358594  0.583063
+
+Beta 1 vs Beta 3 (n=16e6):
+version  p  t_scatter  t_gossip  t_bcast  t_reduce   t_comm   t_comp    t_par   t_post
+  beta1  1   0.009351  0.026889 0.026938  0.004252 0.067842 5.410460 5.476408 0.240526
+  beta1  4   0.018983  0.047523 0.042899  0.102314 0.216440 3.304655 3.416082 0.236006
+  beta1  9   0.035265  0.079037 0.077404  0.155890 0.346806 3.090916 3.260465 0.231066
+  beta1 16   0.055693  0.113076 0.157857  0.537418 0.864329 4.199702 4.417194 0.341058
+  beta3  1   0.009206  0.008652 0.008914  0.004592 0.031404 5.432803 5.462846 0.246582
+  beta3  4   0.024751  0.031770 0.025662  0.099206 0.182631 3.132961 3.222297 0.243432
+  beta3  9   0.036878  0.057794 0.061001  0.124925 0.273950 2.891288 2.997353 0.260161
+  beta3 16   0.051245  0.078691 0.115141  0.417906 0.661739 4.123950 4.257915 0.258927
+Beta 2 Gossip:
+ version  p  t_gossip   t_comm    t_par
+beta2-ag  4  0.049684 0.214270 3.520713
+beta2-ag  9  0.081989 0.445223 3.133721
+beta2-ag 16  0.113882 1.060717 4.322929
+beta2-mb  4  0.049692 0.231540 3.495754
+beta2-mb  9  0.075103 0.411090 3.244368
+beta2-mb 16  0.137285 1.135613 4.656946
+
+Hibrido (n=16e6):
+   version  p   t_sort   t_rank   t_comp   t_comm    t_par
+hibrido-t1  1 1.069859 4.401350 5.489790 0.031293 5.524688
+hibrido-t2  1 0.581156 2.280867 2.862023 0.031695 2.893059
+hibrido-t4  1 0.343940 1.219754 1.563694 0.030560 1.594206
+hibrido-t8  1 0.253167 0.753682 1.005867 0.030988 1.035964
+hibrido-t1  4 0.531263 2.765437 3.296699 0.225506 3.377062
+hibrido-t2  4 0.313927 1.739384 2.052487 0.139774 2.120952
+hibrido-t4  4 0.279727 1.566204 1.831210 0.163012 1.894736
+Secuencial O(n^2):  T = c n^2,  c = 1.195e-10 s
+    n    t_par   modelo
+10000 0.012542 0.011954
+20000 0.050321 0.047818
+40000 0.191283 0.191270
+80000 0.764913 0.765082
+Speedup relativo vs Ranking Sort secuencial extrapolado (c n^2), n=32000000:
+  p=1: S_rel = 9,699
+  p=4: S_rel = 17,560
+  p=9: S_rel = 17,918
+  p=16: S_rel = 10,934
